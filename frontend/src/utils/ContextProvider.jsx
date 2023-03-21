@@ -9,7 +9,7 @@ export const ContextProvider = ({ children }) => {
   //states that going to use in the app
   const [showNotification, setShowNotification] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
-  const [authUser, setAuthUser] = useState("student");
+  const [authUser, setAuthUser] = useState("doctor");
   const [showModal, setShowModal] = useState(false);
 
   const [showRightSidebar, setShowRightSidebar] = useState(false);

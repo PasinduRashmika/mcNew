@@ -27,17 +27,126 @@ import { useState } from "react";
 import { BasicButton } from "../../components/Button/BasicButton";
 import { BasicLayout } from "../../components/layout/BasicLayout";
 import { FormControlLayout } from "../../components/layout/FormControlLayout";
-import ManageAccountsRoundedIcon from "@mui/icons-material/ManageAccountsRounded";
+import axios from 'axios';
 export const SearchStudent = () => {
   const theme = useTheme();
-  const [showPassword, setShowPassword] = useState(false);
-  const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handleMouseDownPassword = () => setShowPassword(!showPassword);
 
-  //handling submit
-  const handlePersonalDetailsUpdate = async (values) => {
+  const [name,setName]= useState('');
+  const [regNo,setRegNo]= useState('');
+  const [email,setEmail]= useState('');
+  const [age,setAge]= useState('');
+  const [dateOfBirth,setDateOfBirth]= useState('');
+  const [faculty,setFaculty]= useState('');
+  const [gender, setGender] = useState('');
+
+  const [address,setAddress]= useState('');
+  const [subjects,setSubjects]= useState('');
+  const [motherOccupation,setMotherOccupation]= useState('');
+  const [fatherOccupation,setFatherOccupation]= useState('');
+  const [siblings,setSiblings]= useState('');
+  const [income,setIncome]= useState('');
+  const [school,setSchool]= useState('');
+  const [ageOfLeaving,setAgeOfLeaving]= useState('');
+  const [gamesPlayedInSchool,setGamesPlayedInSchool]= useState('');
+  const [universityGames,setUniversityGames]= useState('');
+  const [alcohol,setAlcohol]= useState('');
+  const [tobacco,setTobacco]= useState('');
+  const [betalChewing,setBetalChewing]= useState('');
+  const [rice,setRice]= useState('');
+  const [meat,setMeat]= useState('');
+  const [vegetables,setVegetables]= useState('');
+  const [fish,setFishs]= useState('');
+  const [eggs,setEggs]= useState('');
+  const [dryFish,setDryFish]= useState('');
+  const [civilState,setCivilState]= useState('');
+  const [fatherisAlive,setFatherisAlive]= useState('');
+  const [motherisAlive,setMotherisAlive]= useState('');
+  const [isTuberculosis,setIsTuberculosis]= useState('');
+  const [isAsthma,setMoIsAsthma]= useState('');
+  const [isEpilepsy,setIsEpilepsy]= useState('');
+  const [isNervousBreakdown,setIsNervousBreakdown]= useState('');
+  const [height,setHeight]= useState('');
+  const [weight,setWeight]= useState('');
+  const [chestExpansionInsp,setChestExpansionInsp]= useState('');
+  const [chestExpansionExp,setChestExpansionExp]= useState('');
+  const [visionL,setVisionL]= useState('');
+  const [visionR,setVisionR]= useState('');
+  const [teeth,setTeeth]= useState('');
+  const [hearing,setHearing]= useState('');
+  const [chestXRay,setChestXRay]= useState('');
+  const [tuberculinThroat,setTuberculinThroatt]= useState('');
+  const [tuberculinTesBP,setTuberculinTesBP]= useState('');
+  const [vitaminDeficiencies,setVitaminDeficiencies]= useState('');
+  const [heart,setHeart]= useState('');
+  const [lungs,setLungs]= useState('');
+  const [abdomen,setaAbdomen]= useState('');
+  const [varicoseVeins,setVaricoseVeins]= useState('');
+  const [centralNervous,setCentralNervous]= useState('');
+  const [remarks,setRemarks]= useState('');
+
+
+
+  
+
+
+
+  const searchStudent = async (values) => {
     await new Promise((r) => setTimeout(r, 500));
     alert(JSON.stringify(values, null, 2));
+    console.log(values);
+    const oneOfStudent = await axios.post('http://localhost:3000/api/v1/students/getStudentByRegNo',values);
+    console.log(oneOfStudent.data);
+    setName(oneOfStudent.data.data.student.name);
+    setRegNo(oneOfStudent.data.data.student.regNo);
+    setEmail(oneOfStudent.data.data.student.email);
+    setAge(oneOfStudent.data.data.student.age);
+    setDateOfBirth(oneOfStudent.data.data.student.dateOfBirth);
+    setFaculty(oneOfStudent.data.data.student.faculty);
+    setGender(oneOfStudent.data.data.student.gender);
+    setCivilState(oneOfStudent.data.data.student.civilState);
+    setAddress(oneOfStudent.data.data.student.address);
+    setSubjects(oneOfStudent.data.data.student.subjects);
+    setMotherOccupation(oneOfStudent.data.data.student.motherOccupation);
+    setFatherOccupation(oneOfStudent.data.data.student.fatherOccupation);
+    setSiblings(oneOfStudent.data.data.student.siblings);
+    setIncome(oneOfStudent.data.data.student.income);
+    setSchool(oneOfStudent.data.data.student.school);
+    setAgeOfLeaving(oneOfStudent.data.data.student.ageOfLeaving);
+    setGamesPlayedInSchool(oneOfStudent.data.data.student.gamesPlayedInSchool);
+    setUniversityGames(oneOfStudent.data.data.student.universityGames);
+    setAlcohol(oneOfStudent.data.data.student.alcohol);
+    setTobacco(oneOfStudent.data.data.student.tobacco);
+    setBetalChewing(oneOfStudent.data.data.student.betalChewing);
+    setRice(oneOfStudent.data.data.student.rice);
+    setMeat(oneOfStudent.data.data.student.meat);
+    setVegetables(oneOfStudent.data.data.student.vegetables);
+    setFishs(oneOfStudent.data.data.student.fish);
+    setEggs(oneOfStudent.data.data.student.eggs);
+    setDryFish(oneOfStudent.data.data.student.dryFish);
+    setFatherisAlive(oneOfStudent.data.data.student.fatherisAlive);
+    setMotherisAlive(oneOfStudent.data.data.student.motherisAlive);
+    setIsTuberculosis(oneOfStudent.data.data.student.isTuberculosis);
+    setMoIsAsthma(oneOfStudent.data.data.student.isAsthma);
+    setIsEpilepsy(oneOfStudent.data.data.student.isEpilepsy);
+    setIsNervousBreakdown(oneOfStudent.data.data.student.isNervousBreakdown);
+    setHeight(oneOfStudent.data.data.student.height);
+    setWeight(oneOfStudent.data.data.student.weight);
+    setChestExpansionInsp(oneOfStudent.data.data.student.chestExpansionInsp);
+    setChestExpansionExp(oneOfStudent.data.data.student.chestExpansionExp);
+    setVisionL(oneOfStudent.data.data.student.visionL);
+    setVisionR(oneOfStudent.data.data.student.visionR);
+    setTeeth(oneOfStudent.data.data.student.teeth);
+    setHearing(oneOfStudent.data.data.student.hearing);
+    setChestXRay(oneOfStudent.data.data.student.chestXRay);
+    setTuberculinThroatt(oneOfStudent.data.data.student.tuberculinThroat);
+    setTuberculinTesBP(oneOfStudent.data.data.student.tuberculinTesBP);
+    setVitaminDeficiencies(oneOfStudent.data.data.student.vitaminDeficiencies);
+    setHeart(oneOfStudent.data.data.student.heart);
+    setLungs(oneOfStudent.data.data.student.lungs);
+    setaAbdomen(oneOfStudent.data.data.student.abdomen);
+    setVaricoseVeins(oneOfStudent.data.data.student.varicoseVeins);
+    setCentralNervous(oneOfStudent.data.data.student.centralNervous);
+    setRemarks(oneOfStudent.data.data.student.remarks);
   };
   const handlePasswordUpdate = async (values) => {
     await new Promise((r) => setTimeout(r, 500));
@@ -45,13 +154,18 @@ export const SearchStudent = () => {
   };
 
   const personalInitialValues = {
-    title: "mr",
-    fullName: "",
-    email: "",
-    position: "doctor",
-    mobile: "",
-    location: "",
+
   };
+  const studentSchema = yup.object().shape({
+    regNo: yup
+      .string()
+      .matches(
+        /[A-Z][A-Z]-\d\d\d\d-\d\d\d\d\d/i,
+        "Must be in format XX-XXXX-XXXX"
+      )
+      .required("required field")
+    
+  });
 
   //for validation checkup schema for User form
   const updatePersonalSchema = yup.object().shape({
@@ -64,31 +178,15 @@ export const SearchStudent = () => {
       .length(10, "Must contains 10 digit")
       .required("Mobile Number is Required"),
   });
-  const updatePasswordSchema = yup.object().shape({
-    currentpassword: yup.string().required("Password is Required"),
-    newpassword: yup
-      .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      )
-      .required("Password is Required"),
-    confirmnewpassword: yup
-      .string()
-      .matches(
-        /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})/,
-        "Must Contain 8 Characters, One Uppercase, One Lowercase, One Number and One Special Case Character"
-      )
-      .required("Password is Required")
-      .oneOf([yup.ref("newpassword")], "Your password do not match."),
-  });
+
+  
   return (
     <BasicLayout>
       <PageHeader title="Search Student" subtitle="Students  Details" />
       <Formik
-        onSubmit={handlePersonalDetailsUpdate}
+        onSubmit={searchStudent}
         initialValues={personalInitialValues}
-        validationSchema={updatePersonalSchema}
+        validationSchema={studentSchema}
       >
         {({
           values,
@@ -110,6 +208,8 @@ export const SearchStudent = () => {
               placeholder="xx-xxxx-xxxxx"
               value={values.regNo}
               name="regNo"
+              error={!!touched.regNo && !!errors.regNo}
+              helperText={touched.regNo && errors.regNo}
             />
             <BasicButton
               title="Search"
@@ -131,8 +231,8 @@ export const SearchStudent = () => {
               label="Name"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.name}
-              name="name"
+              value={name}
+              name={name}
             />
             <TextField
               fullWidth
@@ -141,8 +241,8 @@ export const SearchStudent = () => {
               label="Registration No"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.regNo}
-              name="Registration No"
+              value={regNo}
+              name={regNo}
             />
             <TextField
               fullWidth
@@ -151,8 +251,8 @@ export const SearchStudent = () => {
               label="Email"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.email}
-              name="Email"
+              value={email}
+              name={email}
             />
             <TextField
               fullWidth
@@ -161,8 +261,8 @@ export const SearchStudent = () => {
               label="Age"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.age}
-              name="Age"
+              value={age}
+              name={age}
             />
             <TextField
               fullWidth
@@ -171,8 +271,8 @@ export const SearchStudent = () => {
               label="Date of Birth"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.dateOfBirth}
-              name="Date of Birth"
+              value={dateOfBirth}
+              name={dateOfBirth}
             />
             <TextField
               fullWidth
@@ -181,8 +281,8 @@ export const SearchStudent = () => {
               label="Faculty"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.faculty}
-              name="Faculty"
+              value={faculty}
+              name={faculty}
             />
             <Box sx={{ display: "flex", alignItems: "center" }}>
               <Box sx={{ marginLeft: "20px" }}>
@@ -202,11 +302,13 @@ export const SearchStudent = () => {
                 >
                   <FormControlLabel
                     value="female"
+                    checked={gender === "female"}
                     control={<Radio />}
                     label="Female"
                   />
                   <FormControlLabel
                     value="male"
+                    checked={gender === "male"}
                     control={<Radio />}
                     label="Male"
                   />
@@ -232,11 +334,13 @@ export const SearchStudent = () => {
                 >
                   <FormControlLabel
                     value="married"
+                    checked={civilState === "married"}
                     control={<Radio />}
                     label="Married"
                   />
                   <FormControlLabel
                     value="single"
+                    checked={civilState === "single"}
                     control={<Radio />}
                     label="Single"
                   />
@@ -251,8 +355,8 @@ export const SearchStudent = () => {
               label="Address"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.address}
-              name="Address"
+              value={address}
+              name={address}
               multiline
               maxRows={4}
             />
@@ -263,8 +367,8 @@ export const SearchStudent = () => {
               label="Subjects"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.subjects}
-              name="Subjects"
+              value={subjects}
+              name={subjects}
               multiline
               maxRows={4}
             />
@@ -276,23 +380,25 @@ export const SearchStudent = () => {
                 <RadioGroup
                   row
                   name="father"
-                  value={values.gender}
+                  value={values.fatherisAlive}
                   sx={{
                     display: "flex",
                     gridColumn: "span 2",
                     justifyContent: "space-between",
                   }}
                   onChange={(event) => {
-                    setFieldValue("gender", event.currentTarget.value);
+                    setFieldValue("fatherisAlive", event.currentTarget.value);
                   }}
                 >
                   <FormControlLabel
                     value="alive"
+                    checked={fatherisAlive === "alive"}
                     control={<Radio />}
                     label="Alive"
                   />
                   <FormControlLabel
                     value="dead"
+                    checked={fatherisAlive === "dead"}
                     control={<Radio />}
                     label="Dead"
                   />
@@ -306,8 +412,8 @@ export const SearchStudent = () => {
               label="Occupation"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.occupation}
-              name="Occupation"
+              value={motherOccupation}
+              name={motherOccupation}
             />
 
             <Box sx={{ display: "flex", alignItems: "center" }}>
@@ -316,23 +422,24 @@ export const SearchStudent = () => {
                 <RadioGroup
                   row
                   name="mother"
-                  value={values.gender}
+                  value={values.motherisAlive}
                   sx={{
                     display: "flex",
                     gridColumn: "span 2",
                     justifyContent: "space-between",
                   }}
                   onChange={(event) => {
-                    setFieldValue("gender", event.currentTarget.value);
+                    setFieldValue("motherisAlive", event.currentTarget.value);
                   }}
                 >
                   <FormControlLabel
                     value="alive"
+                    checked={motherisAlive === "alive"}
                     control={<Radio />}
                     label="Alive"
                   />
                   <FormControlLabel
-                    value="dead"
+                    value="dead"checked={motherisAlive === "dead"}
                     control={<Radio />}
                     label="Dead"
                   />
@@ -346,8 +453,8 @@ export const SearchStudent = () => {
               label="Occupation"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.occupation}
-              name="Occupation"
+              value={fatherOccupation}
+              name={fatherOccupation}
             />
 
             <TextField
@@ -357,8 +464,8 @@ export const SearchStudent = () => {
               label="Siblings"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.siblings}
-              name="Siblings"
+              value={siblings}
+              name={siblings}
               multiline
               maxRows={4}
             />
@@ -369,21 +476,54 @@ export const SearchStudent = () => {
               label="Income"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.income}
-              name="Income"
+              value={income}
+              name={income}
             />
-            <TextField
-              fullWidth
-              variant="outlined"
-              type="text"
-              label="Any family history of Tuberculosis ,Asthma, nervous breakdown, Epilepsy"
-              onBlur={handleBlur}
-              onChange={handleChange}
-              value={values.subjects}
-              name="familyHstory"
-              multiline
-              maxRows={4}
-            />
+            <Box sx={{ display: "flex", alignItems: "center" }}>
+              <Box sx={{ marginLeft: "20px" }}>
+                <FormLabel component="legend">Family History Of</FormLabel>
+                <RadioGroup
+                  row
+                  name="familyHistoryOf"
+                  value={values.gender}
+                  sx={{
+                    display: "flex",
+                    gridColumn: "span 2",
+                    justifyContent: "space-between",
+                  }}
+                  onChange={(event) => {
+                    setFieldValue("familyHistoryOf", event.currentTarget.value);
+                  }}
+                >
+                  <FormControlLabel
+                    value="isTuberculosis"
+                    checked={isTuberculosis}
+                    control={<Checkbox />}
+                    label="Tuberculosis"
+                  />
+                  <FormControlLabel
+                    value="isAsthma"
+                    checked={isAsthma}
+                    control={<Checkbox />}
+                    label="Asthma"
+                  />
+                  <FormControlLabel
+                    value="isEpilepsy"
+                    checked={isEpilepsy}
+                    control={<Checkbox />}
+                    label="Epilepsy"
+                  />
+                  <FormControlLabel
+                    value="isNervousBreakdown"
+                    checked={isNervousBreakdown}
+                    control={<Checkbox />}
+                    label="Nervous Break Down"
+                  />
+                  <br />
+                </RadioGroup>
+              </Box>
+            </Box>
+            
             <br />
             <PageSubHeader subtitle="Personal History" />
             <br />
@@ -406,8 +546,8 @@ export const SearchStudent = () => {
               label="School"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.school}
-              name="School"
+              value={school}
+              name={school}
               multiline
               maxRows={4}
             />
@@ -418,8 +558,8 @@ export const SearchStudent = () => {
               label="Age of Leaving"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.ageOfLeaving}
-              name="Age of Leaving"
+              value={ageOfLeaving}
+              name={ageOfLeaving}
             />
             <TextField
               fullWidth
@@ -429,7 +569,7 @@ export const SearchStudent = () => {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.anyAwardsInSchool}
-              name="Any Awards in School"
+              name="anyAwardsInSchool"
               multiline
               maxRows={4}
             />
@@ -440,8 +580,8 @@ export const SearchStudent = () => {
               label="Games played in school"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.gamesPlayedInSchool}
-              name="Games played in school              "
+              value={gamesPlayedInSchool}
+              name={gamesPlayedInSchool}
               multiline
               maxRows={4}
             />
@@ -452,8 +592,8 @@ export const SearchStudent = () => {
               label="Games you like to play in the university "
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.universityGames}
-              name="Games you like to play in the university"
+              value={universityGames}
+              name={universityGames}
               multiline
               maxRows={4}
             />
@@ -475,16 +615,19 @@ export const SearchStudent = () => {
                 >
                   <FormControlLabel
                     value="alcohol"
+                    checked={alcohol}
                     control={<Checkbox />}
                     label="Alcohol"
                   />
                   <FormControlLabel
                     value="tobacco"
+                    checked={tobacco}
                     control={<Checkbox />}
                     label="Tobacco"
                   />
                   <FormControlLabel
                     value="betelChewing"
+                    checked={betalChewing}
                     control={<Checkbox />}
                     label="Betel Chewing"
                   />
@@ -536,31 +679,37 @@ export const SearchStudent = () => {
                 >
                   <FormControlLabel
                     value="rice"
+                    checked={rice}
                     control={<Checkbox />}
                     label="Rice"
                   />
                   <FormControlLabel
                     value="vegetables"
+                    checked={vegetables}
                     control={<Checkbox />}
                     label="Vegetables"
                   />
                   <FormControlLabel
                     value="meat"
+                    checked={meat}
                     control={<Checkbox />}
                     label="Meat"
                   />
                   <FormControlLabel
                     value="fish"
+                    checked={fish}
                     control={<Checkbox />}
                     label="Fish"
                   />
                   <FormControlLabel
                     value="egg"
+                    checked={eggs}
                     control={<Checkbox />}
                     label="Egg"
                   />
                   <FormControlLabel
                     value="dryFish"
+                    checked={dryFish}
                     control={<Checkbox />}
                     label="Dry Fish"
                   />
@@ -577,8 +726,8 @@ export const SearchStudent = () => {
               label="Height"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.anyAwardsInSchool}
-              name="height"
+              value={height}
+              name={height}
             />
             <TextField
               fullWidth
@@ -587,18 +736,18 @@ export const SearchStudent = () => {
               label="Weight"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.anyAwardsInSchool}
-              name="weight"
+              value={weight}
+              name={weight}
             />
             <TextField
               fullWidth
               variant="outlined"
               type="text"
-              label="Chest expansion insp,"
+              label="Chest Expansion Insp,"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.chestInsp}
-              name="chestInsp"
+              value={chestExpansionInsp}
+              name={chestExpansionInsp}
               multiline
               maxRows={4}
             />
@@ -606,11 +755,11 @@ export const SearchStudent = () => {
               fullWidth
               variant="outlined"
               type="text"
-              label="Chest expansion Exp,"
+              label="Chest Expansion Exp,"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.chestIExp}
-              name="chestExp"
+              value={chestExpansionExp}
+              name={chestExpansionExp}
               multiline
               maxRows={4}
             />
@@ -621,8 +770,8 @@ export const SearchStudent = () => {
               label="Vision(L)"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.visionL}
-              name="VisionL"
+              value={visionL}
+              name={visionL}
             />
             <TextField
               fullWidth
@@ -631,8 +780,8 @@ export const SearchStudent = () => {
               label="Vision(R)"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.visionR}
-              name="VisionR"
+              value={visionR}
+              name={visionR}
             />
             <TextField
               fullWidth
@@ -641,8 +790,8 @@ export const SearchStudent = () => {
               label="Hearing"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.hearing}
-              name="hearing"
+              value={hearing}
+              name={hearing}
               multiline
               maxRows={4}
             />
@@ -653,8 +802,8 @@ export const SearchStudent = () => {
               label="Teeth"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.teeth}
-              name="Teeth"
+              value={teeth}
+              name={teeth}
               multiline
               maxRows={4}
             />
@@ -665,8 +814,8 @@ export const SearchStudent = () => {
               label="Chest X-Ray"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.chestXRay}
-              name="ChestXRay"
+              value={chestXRay}
+              name={chestXRay}
               multiline
               maxRows={4}
             />
@@ -686,8 +835,8 @@ export const SearchStudent = () => {
               label="Throat"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.throat}
-              name="Throat"
+              value={tuberculinThroat}
+              name={tuberculinThroat}
               multiline
               maxRows={4}
             />
@@ -698,8 +847,8 @@ export const SearchStudent = () => {
               label="B.P."
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.bp}
-              name="B.P."
+              value={tuberculinTesBP}
+              name={tuberculinTesBP}
               multiline
               maxRows={4}
             />
@@ -710,8 +859,8 @@ export const SearchStudent = () => {
               label="Any Vitamin Deficiencies"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.anyVitamin}
-              name="Any Vitamin Deficiencies"
+              value={vitaminDeficiencies}
+              name={vitaminDeficiencies}
               multiline
               maxRows={4}
             />
@@ -722,8 +871,8 @@ export const SearchStudent = () => {
               label="Heart"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.heart}
-              name="Heart"
+              value={heart}
+              name={heart}
               multiline
               maxRows={4}
             />
@@ -734,8 +883,8 @@ export const SearchStudent = () => {
               label="Lungs"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.lungs}
-              name="Lungs"
+              value={lungs}
+              name={lungs}
               multiline
               maxRows={4}
             />
@@ -746,8 +895,8 @@ export const SearchStudent = () => {
               label="Abdomen"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.abdomen}
-              name="Abdomen"
+              value={abdomen}
+              name={abdomen}
               multiline
               maxRows={4}
             />
@@ -758,8 +907,8 @@ export const SearchStudent = () => {
               label="Varicose Veins"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.varicoseVeins}
-              name="Varicose Veins"
+              value={varicoseVeins}
+              name={varicoseVeins}
               multiline
               maxRows={4}
             />
@@ -770,8 +919,8 @@ export const SearchStudent = () => {
               label="Central Nervous System"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.centralNervousSystem}
-              name="Central Nervous System"
+              value={centralNervous}
+              name={centralNervous}
               multiline
               maxRows={4}
             />
@@ -782,24 +931,13 @@ export const SearchStudent = () => {
               label="Remarks"
               onBlur={handleBlur}
               onChange={handleChange}
-              value={values.remarks}
-              name="Remarks"
+              value={remarks}
+              name={remarks}
               multiline
               maxRows={4}
             />
             <br />
 
-            <BasicButton
-              title="Submit"
-              color="success"
-              textColor="button.text"
-              hoverColor="button.dark"
-              hoverTextColor="button.hoverText"
-              icon={<DoneAllOutlinedIcon />}
-              type="submit"
-              handler={handleSubmit}
-              style={{ marginTop: "0" }}
-            />
           </FormControlLayout>
         )}
       </Formik>

@@ -34,6 +34,7 @@ import { SearchDrugs } from "./Pages/pharmacy/SearchDrugs";
 import Calendar from "./Pages/FullCalendar";
 import LandingPage from "./Pages/LandingPage/LandingPage";
 
+
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<RootLayout />}>

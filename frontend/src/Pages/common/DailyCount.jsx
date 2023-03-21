@@ -1,4 +1,5 @@
 import { Box, TextField, Typography } from "@mui/material";
+import React, { useEffect,useState } from 'react';
 import PageHeader from "../../components/PageHeader/PageHeader";
 import * as yup from "yup";
 import { Formik } from "formik";
@@ -12,20 +13,36 @@ import { FormControlLayout } from "../../components/layout/FormControlLayout";
 import dayjs from "dayjs";
 import { BottomTopMotion } from "../../components/Motion/BottomTopMotion";
 import { TopBottomMotion } from "../../components/Motion/TopBottomMotion";
+import axios from 'axios';
+
 export const DailyCount = () => {
+
+  const [count,setCount]= useState('00');
   //handling submit
   const handleFormSubmit = async (values) => {
     await new Promise((r) => setTimeout(r, 500));
-    alert(JSON.stringify(values, null, 2));
+    // alert(JSON.stringify(values, null, 2));
+    // const realDate=JSON.stringify(values);
+    console.log(values);
+    try{
+      console.log('ddddddddd');
+      const dailyCount = await axios.post('http://localhost:3000/api/v1/daily/getDailyStudentsCount',values);
+    setCount(dailyCount.data.data.dailyStudents);
+    console.log('fffffff');
+    }catch(e){
+        console.log(e);
+    }
+    
+    
   };
 
   const initialValues = {
-    visitDate: "",
+    date: "",
   };
 
   /* if in schema exists not requiring field submiting not working */
   const userSchema = yup.object().shape({
-    visitDate: yup.string().required("Date is required"),
+    date: yup.string().required("Date is required"),
   });
 
   return (
@@ -53,14 +70,14 @@ export const DailyCount = () => {
               <FormControlLayout onSubmit={handleSubmit}>
                 <DatePicker
                   label="Visited Date"
-                  inputFormat="DD/MM/YYYY"
-                  value={dayjs(values?.visitDate).format("DD-MM-YYYY") || ""}
+                  inputFormat="YYYY/MM/DD"
+                  value={dayjs(values?.date).format("YYYY-MM-DD") || ""}
                   onChange={(newValue) => {
                     setFieldValue(
-                      "visitDate",
-                      dayjs(newValue).format("DD-MM-YYYY")
+                      "date",
+                      dayjs(newValue).format("YYYY-MM-DD")
                     );
-                    setFieldTouched("visitDate", true);
+                    setFieldTouched("date", true);
                   }}
                   renderInput={(params) => (
                     <TextField
@@ -68,17 +85,19 @@ export const DailyCount = () => {
                         width: "100%",
                       }}
                       {...params}
-                      name="visitDate"
+                      name="date"
                       onBlur={handleBlur}
-                      error={errors.visitDate && touched.visitDate}
+                      error={errors.date && touched.date}
                     />
                   )}
                 />
                 <TextField
                   variant="standard"
                   focused
+                  name={count}
+                  value={count}
                   label="Number of Patients"
-                  placeholder="0"
+                  // placeholder="0"
                   InputLabelProps={{ shrink: true }}
                   inputProps={{
                     readOnly: true,
@@ -118,7 +137,7 @@ export const DailyCount = () => {
               width: "300px",
             }}
           >
-            Daily Patients according to faculty
+            Daily Patients According To Faculty-(Today)
           </Typography>
           <PieChart />
         </Box>
@@ -126,3 +145,4 @@ export const DailyCount = () => {
     </BasicLayout>
   );
 };
+
