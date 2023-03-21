@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title> <%=subject%> </title>
+    <%- include("_styles") %>
+
+    
+
+  </head>
+  <body>
+    <table class="body" role="presentation" border="0" cellpadding="0" cellspacing="0">
+      <tbody>
+        <tr>
+          <td></td>
+          <td class="container">
+            <div class="content">
+              <!-- START CENTERED WHITE CONTAINER-->
+              <table class="main" role="presentation">
+                <!-- START MAIN AREA-->
+                <tbody>
+                  <tr>
+                    <td class="wrapper">
+                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                        <tbody>
+                          <tr>
+                            <td>
+                              <!-- CONTENT-->
+                              <h1 class="heading">🎈🎊WELCOME🎊🎈</h1>
+							  <div class="image"><img src="cid:logo" /></div>
+                              <p>Hi <%=name%>,</p>
+                              <p>Welcome to the Medical Center Administrative System</p>
+							  <p>Your medical profile has been successfully created...!🎇🎇🎇</p>
+                              <p>These are your <b>login credentials.<b></p><br>
+                              <p><b>EMAIL : <%=email%></p> </b>
+                              <p><b>PASSWORD : <%=password%></b></p><br>
+                              <table class="btn btn-primary" role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                <tbody>
+                                  <tr>
+                                    <td align="left">
+                                      <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                          <tr>
+                                            <td><a href="<%=url%>" target="_blank">Login</a></td>
+                                          </tr>                                  
+                                        </tbody>
+                                      </table>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+							  <tr>
+                                            <td><p>Thank You...!<p></td>
+                                          </tr>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+              <!-- START FOOTER-->
+              <div class="footer">
+                <table role="presentation" border="0" cellpadding="0" cellspacing="0">
+                  <tbody>
+                    <tr>
+                      <td class="content-block"><span class="apple-link">
+                        <!-- © <span id="year"></span>  by Department of Computer Science <br> -->
+
+						Medical Center<br>
+                        University Of Ruhuna<br>
+                        
+                        Matara, Sri Lanka</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <script>
+      const y=new Date();
+      document.getElementById('year').innerText=y.getFullYear();
+    </script>
+  </body>
+</html>
